@@ -1,11 +1,10 @@
 package com.uniritter.instaRitterTeam.services;
 
-import java.util.Calendar;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uniritter.instaRitterTeam.dtos.FotoParaIncluirDto;
+import com.uniritter.instaRitterTeam.factories.FotoFactory;
 import com.uniritter.instaRitterTeam.models.Foto;
 import com.uniritter.instaRitterTeam.repositories.FotoRepository;
 
@@ -15,6 +14,9 @@ public class FotoService {
 	@Autowired
 	private FotoRepository fotoRepository;
 	
+	@Autowired
+	private FotoFactory fotoFactory;
+	
 	public String a() {
 		return "a";
 	}
@@ -22,7 +24,7 @@ public class FotoService {
 	
 	
 	public void incluir(FotoParaIncluirDto fotoParaIncluirDto) {
-		Foto foto = new Foto();
+		Foto foto = fotoFactory.fabricarFoto(fotoParaIncluirDto);
 		fotoRepository.save(foto);
 	}
 }

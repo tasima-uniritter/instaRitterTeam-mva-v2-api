@@ -11,23 +11,47 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "FOTO")
 public class Foto {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String legenda;
-	private Byte[] imagem;
+	private Byte[] conteudo;
 	private Calendar data;
-	
-	public Foto() {
-		
+
+	public Long getId() {
+		return id;
 	}
 
-	public Foto(String legenda, Byte[] imagem, Calendar data) {
-		super();
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getLegenda() {
+		return legenda;
+	}
+
+	public void setLegenda(String legenda) {
 		this.legenda = legenda;
-		this.imagem = imagem;
+	}
+
+	public Calendar getData() {
+		return data;
+	}
+
+	public void setData(Calendar data) {
 		this.data = data;
 	}
 
+	public Byte[] getConteudo() {
+		return conteudo;
+	}
+
+	public void setConteudo(Byte[] conteudo) {
+		this.conteudo = conteudo;
+	}
+
+	public boolean temConteudo() {
+		return conteudo != null && conteudo.length > 0;
+	}
 }
