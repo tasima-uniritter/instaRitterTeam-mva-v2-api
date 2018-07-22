@@ -1,4 +1,4 @@
-package com.uniritter.instaRitterTeam.instaRitterTeammvav2api;
+package com.uniritter.instaRitterTeam;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

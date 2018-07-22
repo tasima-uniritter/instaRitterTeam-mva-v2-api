@@ -22,7 +22,7 @@ public class FotoService {
 	
 	
 	public void incluir(FotoParaIncluirDto fotoParaIncluirDto) {
-		Foto foto = new Foto("teste", new Byte[1], Calendar.getInstance());
+		Foto foto = new Foto();
 		fotoRepository.save(foto);
 	}
 }
