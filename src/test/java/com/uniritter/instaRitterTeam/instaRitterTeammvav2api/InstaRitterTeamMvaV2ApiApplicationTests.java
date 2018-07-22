@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.uniritter.instaRitterTeam.services.FotoService;
+import com.uniritter.instaRitterTeam.services.FotoServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -17,7 +17,7 @@ public class InstaRitterTeamMvaV2ApiApplicationTests {
 	}
 	
 	@Autowired
-	FotoService fotoService;
+	FotoServiceImpl fotoService;
 	
 	@Test
 	public void devePassarPorqueTaVazio() {
