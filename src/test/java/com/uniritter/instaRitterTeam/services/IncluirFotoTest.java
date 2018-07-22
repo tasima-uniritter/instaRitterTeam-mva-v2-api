@@ -1,4 +1,4 @@
-package com.uniritter.instaRitterTeam.instaRitterTeammvav2api;
+package com.uniritter.instaRitterTeam.services;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -6,15 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.uniritter.instaRitterTeam.services.FotoService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class InstaRitterTeamMvaV2ApiApplicationTests {
-
-	@Test
-	public void contextLoads() {
-	}
+public class IncluirFotoTest {
 	
 	@Autowired
 	FotoService fotoService;
@@ -22,6 +17,6 @@ public class InstaRitterTeamMvaV2ApiApplicationTests {
 	@Test
 	public void devePassarPorqueTaVazio() {
 		fotoService.incluir(null);
-	}	
+	}
 
 }
