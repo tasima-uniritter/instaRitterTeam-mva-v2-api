@@ -16,6 +16,7 @@ import com.uniritter.instaRitterTeam.dtos.FotoParaIncluirDto;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@TestPropertySource("classpath:test.properties")
 public class IncluirFotoTest {
 	
 	@Autowired
@@ -27,9 +28,9 @@ public class IncluirFotoTest {
 		try { 
 			FotoParaIncluirDto dto = new FotoParaIncluirDto("legenda", null, Calendar.getInstance());
 			fotoService.incluir(dto);
-			Assert.fail("Não deveria ter incluído o teste");
+			Assert.fail("Nï¿½o deveria ter incluï¿½do o teste");
 		} catch (InvalidParameterException e) {
-			Assert.assertEquals("Foto deve ter conteúdo.", e.getMessage());
+			Assert.assertEquals("Foto deve ter conteï¿½do.", e.getMessage());
 		}
 	}
 }
