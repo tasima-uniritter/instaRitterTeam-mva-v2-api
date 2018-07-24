@@ -1,6 +1,6 @@
 package com.uniritter.instaRitterTeam.controllers;
 
-import javax.websocket.server.PathParam;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,5 +27,10 @@ public class FotoController {
 	@RequestMapping(value = "/foto/{id}", method = RequestMethod.GET)
 	public Foto consultar(@PathVariable("id") Long id) {
 		return service.consultar(id);
+	}
+
+	@RequestMapping(value = "/foto", method = RequestMethod.GET)
+	public List<Foto> listar() {
+		return service.listar();
 	}
 }
