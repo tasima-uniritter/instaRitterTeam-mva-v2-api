@@ -1,5 +1,7 @@
 package com.uniritter.instaRitterTeam.services;
 
+import static org.junit.Assert.assertNull;
+
 import java.security.InvalidParameterException;
 import java.util.Calendar;
 
@@ -18,34 +20,32 @@ import com.uniritter.instaRitterTeam.models.Foto;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @TestPropertySource("classpath:test.properties")
-public class IncluirFotoTest {
+public class ConsultarFotoTest {
 
 	@Autowired
 	@Qualifier("fotoServiceDatabase")
 	FotoService fotoService;
 
 	@Test
-	public void deveValidarFotoSemConteudo() {
-		try {
-			FotoParaIncluirDto dto = new FotoParaIncluirDto("legenda", null);
-			fotoService.incluir(dto);
-			Assert.fail("Não deveria ter incluído");
-		} catch (InvalidParameterException e) {
-			Assert.assertEquals("Foto deve ter conteúdo.", e.getMessage());
-		}
-	}
-
-	@Test
-	public void deveIncluirFoto() {
-		Byte[] conteudo = new Byte[1];
+	public void deveConsultarFoto() {
+		Byte[] conteudo = new Byte[3];
 		conteudo[0] = new Byte("1");
+		conteudo[1] = new Byte("2");
+		conteudo[2] = new Byte("3");
 		String legenda = "legenda";
 		Calendar dataAtual = Calendar.getInstance();
 		FotoParaIncluirDto dto = new FotoParaIncluirDto(legenda, conteudo);
 		Foto foto = fotoService.incluir(dto);
+
 		Foto fotoIncluida = fotoService.consultar(foto.getId());
+
 		Assert.assertEquals(fotoIncluida.getLegenda(), legenda);
 		Assert.assertArrayEquals(fotoIncluida.getConteudo(), conteudo);
 		Assert.assertEquals(dataAtual.get(Calendar.DAY_OF_YEAR), fotoIncluida.getData().get(Calendar.DAY_OF_YEAR));
+	}
+
+	@Test
+	public void deveRetornarNullQuandoFotoNaoExistir() {
+		assertNull(fotoService.consultar(999l));
 	}
 }

@@ -19,12 +19,12 @@ public class FotoController {
 	@Autowired
 	private FotoService service;
 
-	@RequestMapping(value = "/foto", method = RequestMethod.POST)
+	@RequestMapping(value = "/fotos", method = RequestMethod.PUT)
 	public Foto incluir(@RequestBody FotoParaIncluirDto fotoParaIncluirDto) {
 		return service.incluir(fotoParaIncluirDto);
 	}
 
-	@RequestMapping(value = "/foto/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/fotos/{id}", method = RequestMethod.GET)
 	public Foto consultar(@PathVariable("id") Long id) {
 		return service.consultar(id);
 	}
