@@ -10,6 +10,7 @@ import com.uniritter.instaRitterTeam.services.FotoServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@TestPropertySource("classpath:test.properties")
 public class InstaRitterTeamMvaV2ApiApplicationTests {
 
 	@Test
