@@ -29,7 +29,7 @@ public class FotoController {
 		return service.consultar(id);
 	}
 
-	@RequestMapping(value = "/foto", method = RequestMethod.GET)
+	@RequestMapping(value = "/fotos", method = RequestMethod.GET)
 	public List<Foto> listar() {
 		return service.listar();
 	}
