@@ -2,22 +2,21 @@ package com.uniritter.instaRitterTeam.services;
 
 import static org.junit.Assert.assertNull;
 
-import java.security.InvalidParameterException;
 import java.util.Calendar;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.uniritter.instaRitterTeam.BaseTeste;
 import com.uniritter.instaRitterTeam.dtos.FotoParaIncluirDto;
 import com.uniritter.instaRitterTeam.models.Foto;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class ConsultarFotoTest extends BaseTeste {
 
 	@Autowired

@@ -10,14 +10,8 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
 @TestPropertySource("classpath:test.properties")
 @Transactional
 public class BaseTeste {
 
-	@Test
-	public void teste() {
-		
-	}
 }
