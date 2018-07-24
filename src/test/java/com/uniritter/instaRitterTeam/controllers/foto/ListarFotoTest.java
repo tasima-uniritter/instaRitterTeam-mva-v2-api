@@ -1,4 +1,4 @@
-package com.uniritter.instaRitterTeam.services;
+package com.uniritter.instaRitterTeam.controllers.foto;
 
 import static org.junit.Assert.assertTrue;
 
@@ -9,11 +9,11 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.uniritter.instaRitterTeam.BaseTeste;
+import com.uniritter.instaRitterTeam.controllers.FotoController;
 import com.uniritter.instaRitterTeam.dtos.FotoParaIncluirDto;
 import com.uniritter.instaRitterTeam.models.Foto;
 
@@ -22,8 +22,7 @@ import com.uniritter.instaRitterTeam.models.Foto;
 public class ListarFotoTest extends BaseTeste {
 
 	@Autowired
-	@Qualifier("fotoServiceDatabase")
-	FotoService fotoService;
+	FotoController fotoController;
 
 	@Test
 	public void deveListarFotos() {
@@ -34,18 +33,17 @@ public class ListarFotoTest extends BaseTeste {
 		String legenda = "legenda";
 		Calendar dataAtual = Calendar.getInstance();
 		FotoParaIncluirDto dto = new FotoParaIncluirDto(legenda, conteudo);
-		Foto foto1 = fotoService.incluir(dto);
+		Foto foto1 = fotoController.incluir(dto);
 
 		Byte[] conteudo2 = new Byte[3];
 		conteudo2[0] = new Byte("4");
 		conteudo2[1] = new Byte("6");
 		conteudo2[2] = new Byte("1");
 		String legenda2 = "legenda2";
-		Calendar dataAtual2 = Calendar.getInstance();
 		FotoParaIncluirDto dto2 = new FotoParaIncluirDto(legenda2, conteudo2);
-		Foto foto2 = fotoService.incluir(dto2);
+		Foto foto2 = fotoController.incluir(dto2);
 
-		List<Foto> fotos = fotoService.listar();
+		List<Foto> fotos = fotoController.listar();
 
 		Assert.assertEquals(fotos.get(0).getId(), foto1.getId());
 		Assert.assertEquals(fotos.get(0).getLegenda(), foto1.getLegenda());
@@ -60,6 +58,6 @@ public class ListarFotoTest extends BaseTeste {
 
 	@Test
 	public void deveRetornarUmaListaVaziaQuandoNaoExistirFotosCadastradas() {
-		assertTrue(fotoService.listar().isEmpty());
+		assertTrue(fotoController.listar().isEmpty());
 	}
 }
