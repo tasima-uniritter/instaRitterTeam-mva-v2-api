@@ -14,6 +14,7 @@ public class FotoFactory {
 		return new FotoBuilder()
 				.comConteudo(fotoParaIncluirDto.getConteudo())
 				.comData(Calendar.getInstance())
+				.comLegenda(fotoParaIncluirDto.getLegenda())
 				.instanciar();
 	}
 }

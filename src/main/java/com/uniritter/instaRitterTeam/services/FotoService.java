@@ -5,4 +5,6 @@ import com.uniritter.instaRitterTeam.models.Foto;
 
 public interface FotoService {
 	public Foto incluir(FotoParaIncluirDto fotoParaIncluirDto);
+	
+	public Foto consultar(Long id);
 }

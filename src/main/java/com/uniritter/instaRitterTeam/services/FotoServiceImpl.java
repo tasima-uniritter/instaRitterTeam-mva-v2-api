@@ -22,4 +22,9 @@ public class FotoServiceImpl implements FotoService {
 		Foto foto = fotoFactory.fabricarFoto(fotoParaIncluirDto);
 		return fotoRepository.save(foto);
 	}
+
+	@Override
+	public Foto consultar(Long id) {
+		return fotoRepository.findById(id).orElse(null);
+	}
 }

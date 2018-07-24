@@ -34,7 +34,7 @@ public class FotoBuilder {
 
 	private void validarConteudo() {
 		if(!foto.temConteudo()) {
-			throw new InvalidParameterException("Foto deve ter conteúdo.");
+			throw new InvalidParameterException("Foto deve ter conteÃºdo.");
 		}
 	}
 }
