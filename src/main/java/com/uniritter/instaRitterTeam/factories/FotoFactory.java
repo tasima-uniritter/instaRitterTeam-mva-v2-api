@@ -1,5 +1,7 @@
 package com.uniritter.instaRitterTeam.factories;
 
+import java.util.Calendar;
+
 import org.springframework.stereotype.Service;
 
 import com.uniritter.instaRitterTeam.builders.FotoBuilder;
@@ -11,6 +13,7 @@ public class FotoFactory {
 	public Foto fabricarFoto(FotoParaIncluirDto fotoParaIncluirDto) {
 		return new FotoBuilder()
 				.comConteudo(fotoParaIncluirDto.getConteudo())
+				.comData(Calendar.getInstance())
 				.instanciar();
 	}
 }

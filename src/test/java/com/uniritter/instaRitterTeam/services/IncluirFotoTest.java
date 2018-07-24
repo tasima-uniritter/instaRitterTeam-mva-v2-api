@@ -1,7 +1,6 @@
 package com.uniritter.instaRitterTeam.services;
 
 import java.security.InvalidParameterException;
-import java.util.Calendar;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -25,7 +24,7 @@ public class IncluirFotoTest {
 	@Test
 	public void deveValidarFotoSemConteudo() {
 		try { 
-			FotoParaIncluirDto dto = new FotoParaIncluirDto("legenda", null, Calendar.getInstance());
+			FotoParaIncluirDto dto = new FotoParaIncluirDto("legenda", null);
 			fotoService.incluir(dto);
 			Assert.fail("Não deveria ter incluído o teste");
 		} catch (InvalidParameterException e) {
