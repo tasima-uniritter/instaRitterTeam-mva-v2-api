@@ -25,11 +25,24 @@ public class IncluirFotoTest extends BaseTeste {
 	@Test
 	public void deveValidarFotoSemConteudo() {
 		try {
-			FotoParaIncluirDto dto = new FotoParaIncluirDto("legenda", null);
+			FotoParaIncluirDto dto = new FotoParaIncluirDto("legenda", null, "Garrincha");
 			fotoController.incluir(dto);
 			Assert.fail("Não deveria ter incluído");
 		} catch (InvalidParameterException e) {
 			Assert.assertEquals("Foto deve ter conteúdo.", e.getMessage());
+		}
+	}
+
+	@Test
+	public void deveValidarFotoSemUsuario() {
+		try {
+			Byte[] conteudo = new Byte[1];
+			conteudo[0] = new Byte("1");
+			FotoParaIncluirDto dto = new FotoParaIncluirDto("legenda", conteudo, null);
+			fotoController.incluir(dto);
+			Assert.fail("Não deveria ter incluído");
+		} catch (InvalidParameterException e) {
+			Assert.assertEquals("Foto deve ter usuário.", e.getMessage());
 		}
 	}
 
@@ -39,11 +52,13 @@ public class IncluirFotoTest extends BaseTeste {
 		conteudo[0] = new Byte("1");
 		String legenda = "legenda";
 		Calendar dataAtual = Calendar.getInstance();
-		FotoParaIncluirDto dto = new FotoParaIncluirDto(legenda, conteudo);
+		String usuario = "Zagalo";
+		FotoParaIncluirDto dto = new FotoParaIncluirDto(legenda, conteudo, usuario);
 		Foto foto = fotoController.incluir(dto);
 		Foto fotoIncluida = fotoController.consultar(foto.getId());
 		Assert.assertEquals(fotoIncluida.getLegenda(), legenda);
 		Assert.assertArrayEquals(fotoIncluida.getConteudo(), conteudo);
 		Assert.assertEquals(dataAtual.get(Calendar.DAY_OF_YEAR), fotoIncluida.getData().get(Calendar.DAY_OF_YEAR));
+		Assert.assertEquals(usuario, foto.getUsuario());
 	}
 }

@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.apache.commons.lang3.StringUtils;
+
 @Entity
 @Table(name = "FOTO")
 public class Foto {
@@ -18,6 +20,7 @@ public class Foto {
 	private String legenda;
 	private Byte[] conteudo;
 	private Calendar data;
+	private String usuario;
 
 	public Long getId() {
 		return id;
@@ -49,5 +52,17 @@ public class Foto {
 
 	public boolean temConteudo() {
 		return conteudo != null && conteudo.length > 0;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public boolean temUsuario() {
+		return StringUtils.isNotBlank(usuario);
 	}
 }

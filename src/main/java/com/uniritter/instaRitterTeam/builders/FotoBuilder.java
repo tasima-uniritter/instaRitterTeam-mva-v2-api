@@ -27,9 +27,22 @@ public class FotoBuilder {
 		return this;
 	}
 	
+	public FotoBuilder comUsuario(String usuario) {
+		foto.setUsuario(usuario);
+		return this;
+	}
+	
 	public Foto instanciar() {
 		validarConteudo();
+		validarUsuario();
 		return foto;
+	}
+
+	private void validarUsuario() {
+		if(!foto.temUsuario()) {
+			throw new InvalidParameterException("Foto deve ter usuário.");
+		}
+		
 	}
 
 	private void validarConteudo() {
